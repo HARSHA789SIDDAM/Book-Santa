@@ -47,24 +47,19 @@ export default class BookDonateScreen extends Component {
     }
 
 
-    render() {
-        return (
-            <View style={{ flex: 1 }}>
-                <MyHeader title="Donate Books" />
-                <View style={{ flex: 1 }}>
-                    {this.state.requestedBooksList.length === 0 ? (
-                        <View style={styles.subContainer}>
-                            <Text style={{ fontSize: 20 }}>List Of All Requested Books</Text>
-                        </View>) : (
-                        <FlatList
-                            keyExtractor={this.keyExtractor}
-                            data={this.state.requestedBooksList}
-                            renderItem={this.renderItem}
-
-                        />)}
-                </View>
-            </View>
-        )
+    renderItem = ({ item, i }) => {
+        return (<ListItem key={i}
+            title={item.book_name}
+            subtitle={item.reason_to_request}
+            titleStyle={{ color: 'black', fontWeight: 'bold' }}
+            rightElement={
+                <TouchableOpacity style={styles.button} onPress={() => {
+                    this.props.navigation.navigate("RecieverDetails",
+                        { "details": item })
+                }} >
+                    <Text style={{ color: '#ffff' }}>View</Text>
+                </TouchableOpacity>}
+            bottomDivider />)
     }
 }
 
