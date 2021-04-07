@@ -4,6 +4,7 @@ import { ListItem, Icon } from 'react-native-elements';
 import firebase from 'firebase';
 import MyHeader from '../components/MyHeader';
 import db from '../config';
+import SwipeableFlatlist from "../components/SwipeableFlatlist";
 
 
 export default class NotificationScreen extends Component {
@@ -53,16 +54,15 @@ export default class NotificationScreen extends Component {
             </View>
             <View style={{ flex: 0.9 }}>
                 {this.state.allNotifications.length === 0 ? (
-                    <View style={{
-                        flex: 1, justifyContent: 'center', alignItems: 'center'
-                    }}>
+                    <View style={{ flex: 1, justifyContent: "center", alignItems: "center" }} >
                         <Text style={{ fontSize: 25 }}>You have no notifications</Text>
                     </View>) : (
-                    <FlatList keyExtractor={this.keyExtractor} data={this.state.allNotifications}
-                        renderItem={this.renderItem} />
-                )}
+                    <SwipeableFlatlist allNotifications={this.state.allNotifications} />
+                )
+                }
             </View>
-        </View>)
+        </View>
+        )
     }
 }
 
