@@ -5,12 +5,14 @@ import CustomSideBarMenu from './CustomSideBarMenu';
 import MyDonationScreen from '../screens/MyDonationScreen';
 import NotificationScreen from '../screens/NotificationScreen';
 import SettingScreen from '../screens/SettingScreen';
+import MyReceivedBooksScreen from '../screens/MyRecivedBooksScreen'
 
 export const AppDrawerNavigator = createDrawerNavigator({
     Home: { screen: AppTabNavigator },
     MyDonations: { screen: MyDonationScreen },
     Notification: { screen: NotificationScreen },
-    Setting: { screen: SettingScreen }
+    Setting: { screen: SettingScreen },
+    MyReceivedBooks: { screen: MyReceivedBooksScreen},
 },
     { contentComponent: CustomSideBarMenu },
     { initialRouteName: 'Home' }
